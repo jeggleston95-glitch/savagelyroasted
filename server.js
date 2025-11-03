@@ -4,6 +4,9 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
+const cors = require('cors');
+app.use(cors());
+
 app.post('/create-checkout', async (req, res) => {
   const { target } = req.body;
   const session = await stripe.checkout.sessions.create({
